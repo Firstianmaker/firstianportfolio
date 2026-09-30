@@ -1,0 +1,468 @@
+{
+  "certifications": [
+    {
+      "title": "Code Generations and Optimization class in the Student Developer Initiative",
+      "issuer": "Hacktiv8",
+      "date": "October 2025"
+    },
+    {
+      "title": "Code Generation and Optimization Using IBM Granite",
+      "issuer": "IBM",
+      "date": "September 2025"
+    },
+    {
+      "title": "Information Technology Specialist",
+      "issuer": "Certiport (A Pearson VUE Business)",
+      "date": "December 2024"
+    },
+    {
+      "title": "21st Century’s Employability Skills Development Program",
+      "issuer": "Wadhwani Foundation",
+      "date": "May 2024"
+    }
+  ],
+  "community": [
+    {
+      "title": "PEKANLIT UPNVJ 2026",
+      "role": "Event Operator",
+      "period": "August 2026 — September 2026",
+      "summary": "Supported the technical execution of a seven-day university-wide program, operating hybrid sessions with vMix, multi-screen presentation control, and real-time technical coordination across different venues."
+    },
+    {
+      "title": "Community Service (PKM), SDN 01 Parung",
+      "role": "Scratch Programming Instructor",
+      "period": "June 2025",
+      "summary": "Created one Scratch educational game and two instructional videos, delivered hands-on programming sessions to 35 elementary students, and trained 40 teachers to continue basic programming instruction."
+    },
+    {
+      "title": "Bhineka Tunggal Ika Learning Socialization",
+      "role": "Event Chair",
+      "period": "May 2023",
+      "summary": "Led a 10-member team to plan and execute an educational event for elementary students, including scheduling, speakers, activities, and school coordination."
+    }
+  ],
+  "education": {
+    "school": "Universitas Pembangunan Nasional Veteran Jakarta",
+    "degree": "Bachelor's Degree in Computer Science",
+    "period": "2022 — Present",
+    "gpa": "3.90 / 4.00",
+    "coursework": [
+      "Software Engineering",
+      "Object-Oriented Programming",
+      "Platform-Based Programming",
+      "Database Systems",
+      "Operating Systems",
+      "Big Data",
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Digital Image Processing"
+    ]
+  },
+  "experience": {
+    "company": "GfK — An NIQ Company",
+    "role": "Programmer Intern",
+    "period": "September 2024 — January 2025",
+    "bullets": [
+      "Contributed to the development and maintenance of two internal business applications: Field Management Tools (FMT) and GPOS/ePOS, using Laravel, PHP, and PostgreSQL.",
+      "Developed frontend and backend features including Shop Detail Change, Expenses, Project Report, and User Management, while implementing CRUD operations and optimizing SQL queries.",
+      "Assisted with migrating application data and database structures from MySQL to PostgreSQL.",
+      "Built Python data-processing utilities with Polars and SQLAlchemy to automate Excel data integration.",
+      "Collaborated in a three-member development team using Git and Slack across feature development, debugging, testing, and deployment support."
+    ],
+    "stack": [
+      "Laravel",
+      "PHP",
+      "PostgreSQL",
+      "MySQL",
+      "Python",
+      "Polars",
+      "SQLAlchemy",
+      "Git"
+    ]
+  },
+  "heroMetrics": [
+    {
+      "value": "3.90 / 4.00",
+      "label": "GPA"
+    },
+    {
+      "value": "4",
+      "label": "Major portfolio projects"
+    },
+    {
+      "value": "96.01%",
+      "label": "Sindoraku recognition accuracy"
+    }
+  ],
+  "languages": [
+    {
+      "name": "Bahasa Indonesia",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "Intermediate · ELPT 470 (UPA Bahasa UPNVJ)"
+    }
+  ],
+  "projects": [
+    {
+      "slug": "sindoraku",
+      "title": "Sindoraku — BISINDO Gesture Detection",
+      "shortTitle": "Sindoraku",
+      "period": "June 2026 — July 2026",
+      "category": "Native Android · Machine Learning",
+      "summary": "An on-device Android application for real-time Indonesian Sign Language (BISINDO) gesture detection, built with Kotlin and a MobileNetV2 + LSTM model.",
+      "description": "Sindoraku combines native Android development and machine learning to recognize BISINDO gestures directly from the device camera without requiring an internet connection or server.",
+      "stack": [
+        "Kotlin",
+        "Android",
+        "MobileNetV2",
+        "LSTM",
+        "Machine Learning"
+      ],
+      "metrics": [
+        {
+          "value": "96.01%",
+          "label": "Recognition accuracy"
+        },
+        {
+          "value": "15",
+          "label": "BISINDO words"
+        },
+        {
+          "value": "255",
+          "label": "Self-collected gesture videos"
+        },
+        {
+          "value": "249 ms",
+          "label": "Average detection latency"
+        },
+        {
+          "value": "90.97%",
+          "label": "User acceptance"
+        }
+      ],
+      "highlights": [
+        "Developed the native Android application in Kotlin for real-time camera-based gesture recognition.",
+        "Used MobileNetV2 and LSTM models for BISINDO gesture recognition across 15 words.",
+        "Trained and evaluated the model using 255 self-collected gesture videos.",
+        "Kept recognition on-device so the application can operate without an internet connection or server."
+      ],
+      "challenge": "Create a practical mobile experience capable of recognizing BISINDO gestures in real time while keeping inference on-device and independent from a remote server.",
+      "approach": "Built the application natively in Kotlin and integrated a gesture-recognition model powered by MobileNetV2 and LSTM. The model was trained and evaluated on 255 self-collected gesture videos covering 15 BISINDO words.",
+      "outcome": "The resulting system achieved 96.01% recognition accuracy, 249 ms average detection latency, and 90.97% user acceptance while supporting real-time camera-based recognition without an internet connection.",
+      "media": [
+        {
+          "src": "/images/projects/sindoraku/hero.png",
+          "alt": "Sindoraku mobile application project overview",
+          "width": 1600,
+          "height": 1000,
+          "caption": "Sindoraku — mobile BISINDO detection application."
+        },
+        {
+          "src": "/images/projects/sindoraku/detail-01.png",
+          "alt": "Sindoraku mobile gesture detection interface",
+          "width": 900,
+          "height": 1200,
+          "caption": "Real-time mobile detection workflow."
+        },
+        {
+          "src": "/images/projects/sindoraku/detail-02.png",
+          "alt": "Sindoraku supporting project visual",
+          "width": 1400,
+          "height": 900,
+          "caption": "Supporting project result or interface detail."
+        }
+      ],
+      "featured": true
+    },
+    {
+      "slug": "academy-ntm",
+      "title": "AcademyNTM — Model Recruitment Platform",
+      "shortTitle": "AcademyNTM",
+      "period": "August 2025 — September 2025",
+      "category": "Full-Stack Web",
+      "summary": "A web-based recruitment platform for a professional modeling agency, covering registration, profiles, applications, and administrative workflows.",
+      "description": "AcademyNTM is a full-stack recruitment platform built around a hybrid architecture: Laravel Blade renders the frontend while Node.js and Express.js provide backend services through REST APIs.",
+      "stack": [
+        "Laravel",
+        "PHP",
+        "Node.js",
+        "Express.js",
+        "REST API",
+        "MySQL",
+        "Postman"
+      ],
+      "metrics": [
+        {
+          "value": "Full-stack",
+          "label": "Application scope"
+        },
+        {
+          "value": "REST",
+          "label": "Frontend/backend integration"
+        },
+        {
+          "value": "MySQL",
+          "label": "Primary database"
+        }
+      ],
+      "highlights": [
+        "Built model registration, profile management, application submission, and recruitment workflows.",
+        "Used Laravel Blade for frontend rendering and Node.js with Express.js for backend services.",
+        "Connected the application layers through REST APIs.",
+        "Implemented applicant and administrator capabilities including authentication, portfolios, filtering, dashboards, and CRUD operations.",
+        "Designed and managed the MySQL database and tested API endpoints with Postman."
+      ],
+      "challenge": "Unify the agency's applicant-facing and administrator workflows in one web platform while keeping frontend rendering and backend services clearly separated.",
+      "approach": "Used Laravel Blade for frontend rendering and Node.js with Express.js for backend services, connected through REST APIs. The platform includes authentication, profile and portfolio management, filtering, dashboards, application submission, and CRUD operations backed by MySQL.",
+      "outcome": "Delivered a full-stack recruitment workflow covering model registration, profile management, applications, and administrative operations, with the API layer tested using Postman.",
+      "media": [
+        {
+          "src": "/images/projects/academy-ntm/hero.png",
+          "alt": "AcademyNTM recruitment platform overview",
+          "width": 1600,
+          "height": 1000,
+          "caption": "AcademyNTM — full-stack recruitment platform."
+        },
+        {
+          "src": "/images/projects/academy-ntm/detail-01.png",
+          "alt": "AcademyNTM applicant workflow interface",
+          "width": 1400,
+          "height": 900,
+          "caption": "Applicant profile and application workflow."
+        },
+        {
+          "src": "/images/projects/academy-ntm/detail-02.png",
+          "alt": "AcademyNTM administrator workflow interface",
+          "width": 1400,
+          "height": 900,
+          "caption": "Administrator dashboard and management workflow."
+        }
+      ],
+      "featured": true
+    },
+    {
+      "slug": "buzzbuzz",
+      "title": "BuzzBuzz — Movie & TV Tracking App",
+      "shortTitle": "BuzzBuzz",
+      "period": "April 2025",
+      "category": "Native Android",
+      "summary": "A native Android application for tracking movies and TV shows through ratings, reviews, watch history, and custom watchlists.",
+      "description": "BuzzBuzz focuses on straightforward personal media tracking with a native Kotlin implementation and an interface designed to stay simple and distraction-free.",
+      "stack": [
+        "Kotlin",
+        "Android"
+      ],
+      "metrics": [
+        {
+          "value": "Native",
+          "label": "Android implementation"
+        },
+        {
+          "value": "4",
+          "label": "Core tracking capabilities"
+        }
+      ],
+      "highlights": [
+        "Developed the application natively in Kotlin for Android.",
+        "Implemented watch history, ratings, reviews, and custom watchlist management.",
+        "Focused the user interface on smooth performance, ease of use, and distraction-free media tracking."
+      ],
+      "challenge": "Create a simple personal media-tracking experience that keeps the core actions—remembering, rating, reviewing, and organizing titles—easy to reach.",
+      "approach": "Built the application natively in Kotlin and centered the product around watch history, ratings, reviews, and custom watchlists with a straightforward interface.",
+      "outcome": "Delivered a focused Android application for organizing movie and TV viewing activity without overloading the experience with unnecessary interface complexity.",
+      "media": [
+        {
+          "src": "/images/projects/buzzbuzz/hero.png",
+          "alt": "BuzzBuzz movie and TV tracking application overview",
+          "width": 1600,
+          "height": 1000,
+          "caption": "BuzzBuzz — native Android media tracking application."
+        },
+        {
+          "src": "/images/projects/buzzbuzz/detail-01.png",
+          "alt": "BuzzBuzz mobile application detail",
+          "width": 900,
+          "height": 1200,
+          "caption": "Watchlist, title detail, or review workflow."
+        },
+        {
+          "src": "/images/projects/buzzbuzz/detail-02.png",
+          "alt": "BuzzBuzz supporting mobile application view",
+          "width": 900,
+          "height": 1200,
+          "caption": "Ratings, watch history, or another core workflow."
+        }
+      ]
+    },
+    {
+      "slug": "manakeu",
+      "title": "Manakeu — Financial Management Backend",
+      "shortTitle": "Manakeu",
+      "period": "March 2025 — May 2025",
+      "category": "Backend Engineering",
+      "summary": "A Node.js and Express.js backend for centralized project, finance, budget, approval, reporting, communication, and payment workflows.",
+      "description": "Manakeu is a backend-focused financial management system with authentication, authorization, caching, activity logging, validation, external service integrations, and documented REST APIs.",
+      "stack": [
+        "Node.js",
+        "Express.js",
+        "JWT",
+        "Google OAuth 2.0",
+        "RBAC",
+        "Redis",
+        "Swagger",
+        "OpenAPI 3.0",
+        "Midtrans",
+        "Twilio"
+      ],
+      "metrics": [
+        {
+          "value": "3",
+          "label": "External service integrations"
+        },
+        {
+          "value": "OAuth + JWT",
+          "label": "Authentication"
+        },
+        {
+          "value": "Redis",
+          "label": "Caching"
+        }
+      ],
+      "highlights": [
+        "Built backend services for projects, transactions, budgets, approvals, and reporting.",
+        "Implemented JWT authentication, Google OAuth 2.0, role-based access control, Redis caching, activity logging, and input validation.",
+        "Integrated WhatsApp, Twilio, and Midtrans APIs for messaging, SMS/voice communication, and payments.",
+        "Documented the REST API using Swagger/OpenAPI 3.0."
+      ],
+      "challenge": "Support several financial-management workflows in a centralized backend while covering authentication, permissions, performance, auditability, communication, and payments.",
+      "approach": "Built the backend with Node.js and Express.js, adding JWT authentication, Google OAuth 2.0, RBAC, Redis caching, activity logging, input validation, external communication/payment integrations, and Swagger/OpenAPI 3.0 documentation.",
+      "outcome": "Produced a backend foundation that supports project and financial operations alongside secure access control, caching, activity tracking, messaging, voice/SMS communication, payments, and documented APIs.",
+      "media": [
+        {
+          "src": "/images/projects/manakeu/hero.png",
+          "alt": "Manakeu financial management backend project overview",
+          "width": 1600,
+          "height": 1000,
+          "caption": "Manakeu — financial management backend."
+        },
+        {
+          "src": "/images/projects/manakeu/detail-01.png",
+          "alt": "Manakeu financial workflow or administration view",
+          "width": 1400,
+          "height": 900,
+          "caption": "Financial workflow or administration interface."
+        },
+        {
+          "src": "/images/projects/manakeu/detail-02.png",
+          "alt": "Manakeu API documentation view",
+          "width": 1400,
+          "height": 900,
+          "caption": "API documentation or external integration view."
+        }
+      ]
+    }
+  ],
+  "publication": {
+    "title": "Perbandingan DenseNet201, EfficientNetB0, dan MobileNetV2 untuk Klasifikasi Tuberkulosis dan Pneumonia pada Paru",
+    "journal": "JIKO (Jurnal Informatika dan Komputer)",
+    "issue": "Vol. 10, No. 2",
+    "date": "June 2026",
+    "doi": "10.26798/jiko.v10i2.2686"
+  },
+  "skills": [
+    {
+      "title": "Programming",
+      "items": [
+        "Python",
+        "Java",
+        "Kotlin",
+        "Dart",
+        "C++",
+        "PHP",
+        "JavaScript",
+        "SQL",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "title": "Web & Mobile",
+      "items": [
+        "Laravel",
+        "React.js",
+        "Next.js",
+        "Node.js",
+        "Express.js",
+        "Tailwind CSS",
+        "Bootstrap",
+        "Flutter",
+        "Android SDK / Jetpack"
+      ]
+    },
+    {
+      "title": "Data & AI",
+      "items": [
+        "TensorFlow",
+        "Keras",
+        "OpenCV",
+        "MobileNetV2",
+        "EfficientNetB0",
+        "ResNet50",
+        "DenseNet201",
+        "LSTM",
+        "Transfer Learning",
+        "Fine-Tuning",
+        "Model Quantization",
+        "Data Augmentation"
+      ]
+    },
+    {
+      "title": "Databases",
+      "items": [
+        "MySQL",
+        "PostgreSQL",
+        "MongoDB",
+        "Redis"
+      ]
+    },
+    {
+      "title": "Tools",
+      "items": [
+        "Git",
+        "GitHub",
+        "Visual Studio Code",
+        "Android Studio",
+        "IntelliJ IDEA",
+        "Postman",
+        "Figma",
+        "Google Colab",
+        "Vercel",
+        "Netlify"
+      ]
+    }
+  ],
+  "softSkills": [
+    "Problem Solving",
+    "Critical Thinking",
+    "Communication",
+    "Teamwork",
+    "Adaptability",
+    "Time Management"
+  ],
+  "profile": {
+    "name": "Faiz Firstian Nugroho",
+    "role": "Software Engineer",
+    "location": "Depok, Jawa Barat",
+    "email": "faizfirstiannugroho@gmail.com",
+    "phone": "+628979359266",
+    "intro": "I build practical software across web, mobile, and AI, with hands-on experience turning requirements into reliable products and internal tools.",
+    "about": "I am a final-year Informatics student at Universitas Pembangunan Nasional Veteran Jakarta with practical software-development experience from academic projects and a programmer internship. My work spans full-stack web development, native Android applications, backend systems, and machine-learning applications. I enjoy solving concrete problems, learning new technologies, and building software that is useful, maintainable, and efficient.",
+    "initials": "FF",
+    "heroHeadline": "Building useful software with a product mindset.",
+    "heroEyebrow": "Software engineering · Web · Mobile · AI",
+    "aboutTagline": "A software engineer in progress, grounded in hands-on delivery.",
+    "experienceIntro": "My internship at GfK — An NIQ Company gave me hands-on exposure to maintaining internal applications, shipping features, working with databases, and supporting deployment in a small development team."
+  }
+}
