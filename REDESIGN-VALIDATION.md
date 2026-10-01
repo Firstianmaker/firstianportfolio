@@ -74,3 +74,9 @@ Validation: ESLint and TypeScript passed. Browser verified partial typed text, 3
 About facts and statistics now share a 560px maximum width, aligned left inside the existing column. Browser measurements confirmed matching right edges. Added a 2.2-second dismissible welcome dialog once per tab, a desktop section rail with current-section state, scroll cue, heading dividers and pointer spotlight on existing cards. Reduced-motion skips the intro. No personal data or new content sections were added.
 
 ESLint/TypeScript passed. Browser confirmed automatic intro closure, restored scrolling, equal About widths, and no console errors. Preview evidence: review-about.png. Intro is an opening animation, not a fabricated loading percentage.
+
+## 2026-10-01: navigation and content review
+
+Navbar links aligned right; hero Instagram replaced by Email; side dot navigation removed; scroll cue centered. About combines place/date of birth, adds Bahasa Indonesia and English, and restores the existing PDDIKTI link. Homepage shows at most four projects and links to /projects. Activity detail shows four documentation slots from its gallery. Contact location removed and Letterboxd linked to the supplied firstiannn profile. A local SVG pixel cat walks beside the filters when it enters the viewport; reduced motion disables animation.
+
+Validation: lint, TypeScript, 15 tests and production build passed. Browser verified Mobile filter (2/4), all-projects page, four homepage cards, Email/PDDIKTI/Letterboxd destinations, absent side rail and four activity documentation slots. Real documentation images remain to be uploaded in Sanity. Screenshot: review-projects-cat.png.

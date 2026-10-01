@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { WalkingCat } from "@/components/walking-cat";
 import { ProjectCard } from "@/components/project-card";
 import type { Project } from "@/types/portfolio";
 
@@ -15,7 +16,7 @@ export function ProjectBrowser({ projects }: { projects: Project[] }) {
         <button aria-pressed={category === null} onClick={() => setCategory(null)}>All Projects<span>{projects.length}</span></button>
         {categories.map((item) => <button key={item} aria-pressed={category === item} onClick={() => setCategory(item)}>{item}</button>)}
       </div>
-      <p className="project-result-count" role="status">{visible.length} of {projects.length} projects</p>
+      <div className="project-toolbar-aside"><WalkingCat /><p className="project-result-count" role="status">{visible.length} of {projects.length} projects</p></div>
     </div>
     <div className="project-card-grid">{visible.map((project) => <div className="project-filter-item" key={project.slug}><ProjectCard project={project} /></div>)}</div>
   </>;

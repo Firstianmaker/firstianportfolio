@@ -8,10 +8,10 @@ import { SocialLinks } from "@/components/social-links";
 import { RoleRotator } from "@/components/role-rotator";
 import { ImageGallery } from "@/components/image-gallery";
 import { MediaPlaceholder } from "@/components/media-placeholder";
-import { PortfolioPhoto } from "@/components/portfolio-photo";
-import { homepageProjects, serializeJsonLd } from "@/content/utils";
+import { homepageProjects, serializeJsonLd, safeExternalUrl } from "@/content/utils";
 import { displayProfile, formatBirthDate, uniqueImages, wholeYearsSince } from "@/content/presentation";
 import { technicalGroups } from "@/data/technical-stack";
+import type { CSSProperties } from "react";
 import { ContactEmail } from "@/components/contact-email";
 import { WelcomeIntro } from "@/components/welcome-intro";
 import { PageMotion } from "@/components/page-motion";
@@ -22,7 +22,7 @@ export const revalidate = 60;
 export default async function Home() {
   const { profile: rawProfile, projects, experiences, community, educations } = await getPortfolio();
   const profile = displayProfile(rawProfile);
-  const selectedProjects = homepageProjects(projects);
+  const selectedProjects = homepageProjects(projects).slice(0, 4);
   const age = wholeYearsSince(profile.birthDate);
   const yearsInIt = wholeYearsSince(profile.itExperienceStartDate);
   const birthDate = formatBirthDate(profile.birthDate);
@@ -37,8 +37,8 @@ export default async function Home() {
     address: { "@type": "PostalAddress", addressLocality: profile.location, addressCountry: "ID" },
   };
   const personalDetails = [
-    ["Place of birth", profile.birthPlace || "Not provided"],
-    ["Date of birth", birthDate || "Not provided"],
+    ["Place & date of birth", [profile.birthPlace, birthDate].filter(Boolean).join(", ") || "Not provided"],
+    ["Languages", "Bahasa Indonesia · English"],
     ["Age", age !== undefined ? `${age} years` : "Not provided"],
     ["Height", profile.heightCm ? `${profile.heightCm} cm` : "Not provided"],
     ["Current location", profile.location],
@@ -53,10 +53,10 @@ export default async function Home() {
       <div className="hero-architecture" aria-hidden="true"><div className="architecture-stack">{Array.from({ length: 7 }, (_, i) => <span key={i} style={{ "--plane": i } as React.CSSProperties} />)}</div></div>
       <Container className="hero-content">
         <div className="hero-topline"><p className="eyebrow">Developer portfolio</p><span className="eyebrow hero-location">{profile.location}</span></div>
-        <h1 id="hero-title">{profile.name}</h1>
+        <h1 id="hero-title" className="hero-name-animation" aria-label={profile.name}><span aria-hidden="true">{profile.name.split(" ").map((word, wordIndex) => <span key={wordIndex}>{wordIndex > 0 && " "}<span className="hero-name-word">{Array.from(word).map((letter, index) => <span key={index} className="hero-name-letter" style={{ "--letter-delay": `${(wordIndex * 5 + index) * 22}ms` } as CSSProperties}>{letter}</span>)}</span></span>)}</span></h1>
         <RoleRotator roles={profile.roles?.length ? profile.roles : [profile.role]} />
         <div className="hero-shortcuts"><CvLink profile={profile} showUnavailable /><WhatsAppLink profile={profile} /></div>
-        <SocialLinks profile={profile} />
+        <SocialLinks profile={profile} hero />
         <a href="#about" className="scroll-cue"><span className="scroll-cue-track" aria-hidden="true"><span /></span>Scroll to explore <span aria-hidden="true">↓</span></a>
         <div className="site-stack"><p className="eyebrow">This portfolio is built with</p><ul>{["Next.js", "React", "TypeScript", "Tailwind CSS", "Sanity"].map((name) => <li key={name}>{name}</li>)}</ul></div>
       </Container>
@@ -65,11 +65,11 @@ export default async function Home() {
     <section id="about" className="section">
       <Container><div className="section-topline"><h2 className="direct-heading">About</h2></div>
         <div className="personal-layout">
-          <div className="personal-photo">{profile.aboutPhoto || profile.heroPhoto ? <PortfolioPhoto media={profile.aboutPhoto || profile.heroPhoto} /> : <MediaPlaceholder label={profile.name + " · personal photo"} portrait />}</div>
+          <div className="personal-photo">{profile.aboutPhoto || profile.heroPhoto ? <ImageGallery images={uniqueImages([profile.aboutPhoto || profile.heroPhoto])} title={profile.name} className="about-photo-gallery" /> : <MediaPlaceholder label={profile.name + " · personal photo"} portrait />}</div>
           <div className="personal-info">{profile.aboutShort && <p className="reading-copy short-about">{profile.aboutShort}</p>}
-            {education && <p className="education-summary">{education.degree}<span>{education.school}</span></p>}
+            {education && <div className="education-with-link"><p className="education-summary">{education.degree}<span>{education.school}</span></p>{safeExternalUrl(education.pddiktiUrl || profile.pddiktiUrl) && <a href={safeExternalUrl(education.pddiktiUrl || profile.pddiktiUrl)} target="_blank" rel="noopener noreferrer" className="pddikti-button">PDDIKTI<ArrowUpRightIcon className="size-4" /></a>}</div>}
             <dl className="personal-facts">{personalDetails.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
-            <div className="personal-stats"><article className="stat-projects"><div className="stat-header"><h3>Total Projects</h3><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><path d="M14 17.5h7m-3.5-3.5v7" /></svg></div><strong>{projects.length}<span>projects</span></strong><Link href="#projects" className="stat-footer">Explore projects <span aria-hidden="true">↗</span></Link></article><article className="stat-experience"><div className="stat-header"><h3>Years of Experience in IT</h3><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 6v6l4 2" /></svg></div><strong>{yearsInIt !== undefined ? yearsInIt : "—"}<span>years</span></strong><p className="stat-footer">{profile.itExperienceStartDate && yearsInIt !== undefined ? `Since ${new Intl.DateTimeFormat("en", { month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(profile.itExperienceStartDate + "T00:00:00Z"))} · study & projects` : "Starting date not provided"}</p></article></div>
+            <div className="personal-stats"><Link href="/projects" className="stat-projects stat-card-link"><div className="stat-header"><h3>Total Projects</h3><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><path d="M14 17.5h7m-3.5-3.5v7" /></svg></div><strong>{projects.length}<span>projects</span></strong><span className="stat-footer">Explore projects <span aria-hidden="true">↗</span></span></Link><Link href="#experience" className="stat-experience stat-card-link"><div className="stat-header"><h3>Years of Experience in IT</h3><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 6v6l4 2" /></svg></div><strong>{yearsInIt !== undefined ? yearsInIt : "—"}<span>years</span></strong><p className="stat-footer">{profile.itExperienceStartDate && yearsInIt !== undefined ? `Since ${new Intl.DateTimeFormat("en", { month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(profile.itExperienceStartDate + "T00:00:00Z"))} · study & projects` : "Starting date not provided"}<span aria-hidden="true">↗</span></p></Link></div>
           </div>
         </div>
       </Container>
@@ -78,6 +78,7 @@ export default async function Home() {
     <section id="projects" className="section work-section">
       <Container><div className="section-topline"><h2 className="direct-heading">Projects</h2></div>
         <ProjectBrowser projects={selectedProjects} />
+        <div className="all-projects-action"><Link href="/projects" className="button button-secondary">See all projects<ArrowUpRightIcon className="size-4" /></Link></div>
       </Container>
     </section>
 
@@ -87,7 +88,7 @@ export default async function Home() {
           const images = uniqueImages([experience.image, ...experience.gallery]);
           return <article key={experience._id} className="work-experience-card">
             <div className="work-photo-strip">{images.length > 0 && <ImageGallery images={images} title={experience.company} previewCount={3} className="work-image-gallery" />}{Array.from({ length: Math.max(0, 3 - images.length) }, (_, index) => <MediaPlaceholder key={index} label={`${experience.company} · photo ${images.length + index + 1}`} />)}</div>
-            <div className="experience-row"><div className="experience-meta"><p className="eyebrow">{experience.period}</p><h3>{experience.role}</h3><p>{experience.company}</p><div className="tag-list">{experience.stack.map((item) => <span key={item}>{item}</span>)}</div></div><ul className="contribution-list">{experience.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></div>
+            <div className="experience-row"><div className="experience-meta"><p className="eyebrow">{experience.period}</p><h3>{experience.role}</h3><p>{experience.company}</p><div className="tag-list">{experience.stack.map((item) => <span key={item}>{item}</span>)}</div></div><details className="work-responsibilities" open><summary>Responsibilities<span className="disclosure-sign" aria-hidden="true" /></summary><ul className="contribution-list">{experience.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></details></div>
           </article>;
         })}</div>
       </Container>
@@ -107,7 +108,7 @@ export default async function Home() {
     </section>
 
     <section id="contact" className="contact-section compact-contact">
-      <Container><div className="section-topline"><h2 className="direct-heading">Contact</h2><span className="eyebrow">{profile.location}</span></div>
+      <Container><div className="section-topline"><h2 className="direct-heading">Contact</h2></div>
         <div className="contact-invitation"><h3>Let’s build something<br /><span>useful together.</span></h3><p>Have a project in mind? Let’s talk about what you want to build.</p><ContactEmail email={profile.email} /></div>
         <div className="contact-bottom"><SocialLinks profile={profile} /><CvLink profile={profile} showUnavailable /></div>
       </Container>

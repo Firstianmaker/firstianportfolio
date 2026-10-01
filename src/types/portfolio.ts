@@ -45,7 +45,9 @@ export type Profile = {
   linkedinUrl?: string; githubUrl?: string; pddiktiUrl?: string;
   cv?: { url: string; filename: string };
   cvUrl?: string;
+  musicUrl?: string;
   instagramUrl?: string;
+  letterboxdUrl?: string;
   roles?: string[];
   aboutShort?: string;
   birthPlace?: string;

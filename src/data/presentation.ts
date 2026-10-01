@@ -11,6 +11,7 @@ export const presentation: Partial<Profile> = {
   githubUrl: "https://github.com/Firstianmaker",
   linkedinUrl: "https://www.linkedin.com/in/faiz-firstian-nugroho-518299305/",
   instagramUrl: "",
+  letterboxdUrl: "https://letterboxd.com/firstiannn/",
   cvUrl: "",
 };
 
