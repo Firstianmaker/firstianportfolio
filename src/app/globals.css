@@ -41,7 +41,6 @@ section[id], div[id] { scroll-margin-top: 6rem; }
 .brand { display: flex; align-items: center; gap: 16px; min-height: 44px; }
 .brand-initials { font-size: 1.8rem; font-weight: 600; letter-spacing: -.08em; line-height: 1; }
 .brand-initials > span { color: var(--primary); margin-left: 4px; }
-.brand-name { max-width: 140px; font-size: .75rem; line-height: 1.45; }
 .desktop-nav { display: flex; gap: 26px; }
 .desktop-nav a, .header-cv { display: flex; align-items: center; min-height: 44px; font-size: .75rem; color: #c5c5cc; }
 .desktop-nav a:hover, .text-link:hover, .header-cv:hover { color: var(--primary); }
@@ -191,14 +190,12 @@ section[id], div[id] { scroll-margin-top: 6rem; }
 @media (min-width: 1600px) { .architecture-stack { right: calc((100vw - 1400px) / 2); } }
 @media (max-width: 1100px) {
   .desktop-nav { gap: 16px; }
-  .brand-name { display: none; }
   .about-layout, .skills-layout, .credentials-layout { gap: 48px; }
   .project-entry, .experience-row { gap: 40px; }
 }
 @media (max-width: 1023px) {
   .desktop-nav, .header-contact { display: none; }
   .menu-button { display: inline-flex; }
-  .brand-name { display: block; }
   .header-inner { min-height: 76px; }
   .hero h1 { padding-top: 64px; font-size: clamp(3.5rem, 8vw, 5.5rem); }
   .hero-intro { display: block; max-width: 390px; }
@@ -219,7 +216,6 @@ section[id], div[id] { scroll-margin-top: 6rem; }
 @media (max-width: 639px) {
   .header-inner { min-height: 72px; gap: 12px; }
   .brand { gap: 12px; }
-  .brand-name { font-size: .625rem; max-width: 110px; }
   .brand-initials { font-size: 1.6rem; }
   .header-cv { font-size: .625rem; }
   .header-actions { gap: 8px; }

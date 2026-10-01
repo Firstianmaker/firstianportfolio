@@ -24,7 +24,7 @@ export const galleryField = defineField({ name: 'gallery', title: 'Image gallery
 // Additive field-level localization: never change the type of an existing field.
 // Optional overrides are staged here; the public site remains English for now.
 export const translationsField = (fields: [string, string, 'string' | 'text' | 'richContent'][]) => defineField({
-  name: 'translations', title: 'Translations (optional preparation)', type: 'object',
+  name: 'translations', title: 'Translations (legacy)', type: 'object', hidden: true,
   options: { collapsible: true, collapsed: true },
   description: 'Prepared for a future EN / ID switcher. The website currently uses the original English fields. Leave these empty unless preparing translations; do not copy images, dates, links, or files.',
   fields: fields.map(([name, title, type]) => defineField({

@@ -28,14 +28,17 @@ test('legacy and newly published activities retain content and ordered optional 
 
 test('new profile files and media fields survive actual GROQ projections', async () => {
   const docs = await createInitialDocuments(async (media) => image(media.alt));
-  Object.assign(docs.find((d) => d._id === 'profile')!, { heroPhoto: image('Hero'), aboutPhoto: image('About'), cv: { asset: { _ref: 'file-cv' } }, githubUrl: 'https://github.com/example', linkedinUrl: 'javascript:alert(1)' });
+  Object.assign(docs.find((d) => d._id === 'profile')!, { heroPhoto: image('Hero'), aboutPhoto: image('About'), cv: { asset: { _ref: 'file-cv' } }, cvIndonesian: { asset: { _ref: 'file-cv-id' } }, githubUrl: 'https://github.com/example', linkedinUrl: 'javascript:alert(1)' });
   Object.assign(docs.find((d) => d._type === 'experience')!, { image: image('Work'), gallery: [image('Team'), { _type: 'portfolioImage' }] });
   Object.assign(docs.find((d) => d._type === 'certification')!, { image: image('Certificate'), verificationUrl: 'https://example.com/verify' });
+  docs.push({ _id: 'file-cv-id', _type: 'sanity.fileAsset', url: 'https://cdn.sanity.io/files/test1234/production/indonesian.pdf', originalFilename: 'CV Indonesia.pdf' });
   docs.push({ _id: 'file-cv', _type: 'sanity.fileAsset', url: 'https://cdn.sanity.io/files/test1234/production/current.pdf', originalFilename: 'Faiz CV.pdf' });
   const result = normalizePortfolio(await (await evaluate(parse(portfolioQuery), { dataset: docs })).get() as RawPortfolio, config);
   assert.ok(result.profile.heroPhoto?.src);
   assert.ok(result.profile.aboutPhoto?.src);
   assert.equal(result.profile.cv?.filename, 'Faiz CV.pdf');
+  assert.equal(result.profile.cvIndonesian?.filename, 'CV Indonesia.pdf');
+  assert.notEqual(result.profile.cvIndonesian?.url, result.profile.cv?.url);
   assert.equal(result.profile.linkedinUrl, undefined);
   assert.equal(result.experiences[0].gallery.length, 1);
   assert.ok(result.experiences[0].image?.src);

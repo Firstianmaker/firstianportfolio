@@ -1,3 +1,4 @@
+import { CvDialog } from "@/components/cv-dialog";
 import type { Profile } from "@/types/portfolio";
 import { whatsappUrl } from "@/content/utils";
 import { cvHref } from "@/content/presentation";
@@ -13,8 +14,9 @@ export function WhatsAppLink({ profile, className = "" }: { profile: Profile; cl
 
 export function CvLink({ profile, showUnavailable = false }: { profile: Profile; showUnavailable?: boolean }) {
   const href = cvHref(profile);
-  const content = <><span className="cv-document" aria-hidden="true"><svg viewBox="0 0 24 28" fill="none"><path d="M5 1h9l5 5v20H5zM14 1v6h5M8 12h8M8 16h6" stroke="currentColor" strokeWidth="1.5" /></svg></span><span><strong>Download CV</strong><small>{href ? "Resume & experience" : "File not added yet"}</small></span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className="cv-download"><path d="M10 2v10m-4-4 4 4 4-4M3 14v3h14v-3" stroke="currentColor" strokeWidth="1.5" /></svg></>;
-  return href ? <a href={href} className="cv-button" target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined}>{content}</a> : showUnavailable ? <span className="cv-button cv-unavailable" aria-disabled="true">{content}</span> : null;
+  const content = <><span className="cv-document" aria-hidden="true"><svg viewBox="0 0 24 28" fill="none"><path d="M5 1h9l5 5v20H5zM14 1v6h5M8 12h8M8 16h6" stroke="currentColor" strokeWidth="1.5" /></svg></span><span><strong>Download CV</strong></span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className="cv-download"><path d="M10 2v10m-4-4 4 4 4-4M3 14v3h14v-3" stroke="currentColor" strokeWidth="1.5" /></svg></>;
+  const indonesianHref = cvHref(profile, "id");
+  return href || indonesianHref || showUnavailable ? <CvDialog englishHref={href} indonesianHref={indonesianHref} className="cv-button">{content}</CvDialog> : null;
 }
 
 export function ProfileActions({ profile }: { profile: Profile }) {

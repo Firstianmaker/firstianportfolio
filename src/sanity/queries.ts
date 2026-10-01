@@ -20,6 +20,7 @@ export const portfolioQuery = `{
     volunteerImages[]{..., "metadata": asset->metadata},
     heroPhoto{..., "metadata": asset->metadata},
     aboutPhoto{..., "metadata": asset->metadata},
+    "cvIndonesian": cvIndonesian.asset->{"url": url, "filename": originalFilename},
     "cv": cv.asset->{"url": url, "filename": originalFilename}
   },
   "projects": *[_type == "project" && defined(slug.current)]

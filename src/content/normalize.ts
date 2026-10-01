@@ -74,6 +74,7 @@ export function normalizePortfolio(raw: RawPortfolio, config: { projectId: strin
       birthPlace: profile.birthPlace ?? undefined, birthDate: profile.birthDate ?? undefined,
       heightCm: profile.heightCm ?? undefined, itExperienceStartDate: profile.itExperienceStartDate ?? undefined,
       volunteerImages: profile.volunteerImages ? gallery(profile.volunteerImages, config) : undefined,
+      cvIndonesian: cvDownloadUrl(profile.cvIndonesian) ? profile.cvIndonesian : undefined,
       cv: cvDownloadUrl(profile.cv) ? profile.cv : undefined,
     }, heroMetrics: heroMetrics ?? [], softSkills: softSkills ?? [], languages: languages ?? [],
     projects: (raw.projects ?? []).filter((p) => p.slug && p.title).map((p) => normalizeProject(p, config)),

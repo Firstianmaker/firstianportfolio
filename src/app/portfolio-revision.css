@@ -488,8 +488,9 @@ a.platform-letterboxd:hover { background: #303d49; }
 
 .navbar-identity { display: flex; align-items: center; gap: 12px; }
 .navbar-music { position: relative; flex-shrink: 0; }
-.music-button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #34485e; border-radius: 50%; background: #0b1624; color: #a9c8d8; cursor: pointer; }
-.music-button svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.music-button { position: relative; display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #34485e; border-radius: 50%; background: #0b1624; color: #a9c8d8; cursor: pointer; }
+.music-button::after { content: ''; position: absolute; inset: -5px; border-radius: 50%; }
+.music-button svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .music-button:hover { color: #8de3ee; border-color: #6bb6c9; }
 .music-button:focus-visible, .music-bubble button:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
 .music-bubble { position: absolute; top: calc(100% + 12px); right: 0; width: 260px; display: flex; align-items: center; gap: 8px; margin: 0; padding: 4px 4px 4px 16px; max-width: calc(100vw - 40px); overflow: visible; border: 1px solid #34485e; border-radius: 12px 12px 4px 12px; background: #102131; color: #e4edf4; font: 400 .8125rem var(--font-inter), sans-serif; box-shadow: 0 8px 28px #0005; }
@@ -497,3 +498,52 @@ a.platform-letterboxd:hover { background: #303d49; }
 @media (max-width: 639px) { .navbar-identity { gap: 8px; } .music-bubble { right: -50px; width: 230px; } }
 .music-bubble p { margin: 0; }
 .music-bubble button { flex-shrink: 0; width: 44px; height: 44px; color: #a9c8d8; font-size: 22px; cursor: pointer; border-radius: 8px; }
+
+.about-publications { list-style: none; padding: 0; margin: 0 0 22px; }
+.about-publications li { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: start; gap: 12px; padding: 12px 0; border-top: 1px solid #34485e; }
+.publication-icon { width: 18px; height: 18px; margin-top: 3px; stroke: #8de3ee; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.publication-title { margin: 0; color: #dce8f2; font: 500 .8125rem/1.5 var(--font-inter), sans-serif; overflow-wrap: anywhere; }
+.publication-meta { margin: 4px 0 0; color: #a0b4c6; font: 400 .6875rem/1.6 var(--font-inter), sans-serif; overflow-wrap: anywhere; }
+.about-publications a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; color: #8de3ee; font: 500 .75rem var(--font-inter), sans-serif; }
+.about-publications a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.about-publications a:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+@media (max-width: 639px) { .about-publications li { column-gap: 8px; } }
+
+.hero-label { position: relative; display: inline-grid; cursor: pointer; padding: 0; text-align: left; touch-action: manipulation; }
+.hero-label::after { content: ''; position: absolute; inset: -14px -4px; }
+.hero-label-size, .hero-label-text { grid-area: 1 / 1; white-space: pre; }
+.hero-label-size { visibility: hidden; }
+.hero-label-text { font-family: var(--font-mono), monospace; }
+.hero-label[data-active="true"], .hero-label:hover { color: #8de3ee; }
+.hero-label:focus-visible { outline: 2px solid var(--primary); outline-offset: 8px; border-radius: 2px; }
+
+.cv-dialog { position: fixed; inset: 0; margin: auto; padding: 0; width: min(440px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); border: 1px solid #34485e; border-radius: 14px; background: #0b1624; color: #dce8f2; overflow-y: auto; }
+.cv-dialog::backdrop { background: #02050ecc; backdrop-filter: blur(6px); }
+.cv-dialog-content { padding: 24px; }
+.cv-dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cv-dialog-heading h2 { margin: 0; font: 600 1.125rem/1.4 var(--font-inter), sans-serif; }
+.cv-dialog-heading button { flex-shrink: 0; width: 44px; height: 44px; font-size: 26px; cursor: pointer; }
+.cv-dialog-content > p { color: #a0b4c6; margin: 4px 0 24px; font: 400 .8125rem/1.6 var(--font-inter), sans-serif; }
+.cv-language-options { display: grid; gap: 12px; }
+.cv-language-options > a, .cv-language-unavailable { display: grid; grid-template-columns: 34px minmax(0, 1fr) 16px; align-items: center; gap: 12px; padding: 16px 12px; border: 1px solid #34485e; border-radius: 8px; font: 500 .8125rem/1.5 var(--font-inter), sans-serif; }
+.cv-language-options > a:hover { border-color: #8de3ee; background: #14283a; }
+.cv-language-tag { color: #8de3ee; font: 500 .75rem var(--font-mono), monospace; }
+.cv-language-unavailable { color: #a0b4c6; }
+.cv-language-unavailable small { display: block; font-size: .6875rem; font-weight: 400; }
+.cv-language-unavailable > span:last-child { visibility: hidden; }
+.cv-dialog :is(a, button):focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+body:has(.cv-dialog[open]) { overflow: hidden; }
+button.cv-button { cursor: pointer; text-align: left; }
+
+.cv-robot { width: 132px; margin: -8px auto 8px; pointer-events: none; }
+.cv-robot svg { display: block; width: 100%; height: auto; }
+.cv-robot-wave { transform-origin: 49px 69px; }
+.cv-robot-eyes { transform-box: fill-box; transform-origin: center; }
+.cv-dialog[open] .cv-robot-body { animation: cv-robot-bob 2.4s ease-in-out 2; }
+.cv-dialog[open] .cv-robot-wave { animation: cv-robot-wave 2.4s ease-in-out 2; }
+.cv-dialog[open] .cv-robot-eyes { animation: cv-robot-blink 4.8s linear; }
+@keyframes cv-robot-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes cv-robot-wave { 0%, 60%, 100% { transform: rotate(0); } 15%, 40% { transform: rotate(18deg); } 28%, 52% { transform: rotate(-8deg); } }
+@keyframes cv-robot-blink { 0%, 35%, 39%, 76%, 80%, 100% { transform: scaleY(1); } 37%, 78% { transform: scaleY(.12); } }
+@media (prefers-reduced-motion: reduce) { .cv-dialog[open] :is(.cv-robot-body, .cv-robot-wave, .cv-robot-eyes) { animation: none; } }
+@media (max-height: 540px) { .cv-robot { width: 88px; margin-bottom: 0; } }

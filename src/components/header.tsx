@@ -1,5 +1,6 @@
 "use client";
 
+import { CvDialog } from "@/components/cv-dialog";
 import Link from "next/link";
 import { MusicButton } from "@/components/music-button";
 import { useEffect, useRef, useState } from "react";
@@ -7,7 +8,7 @@ import { Container } from "@/components/container";
 
 const nav = [["About", "/#about"], ["Projects", "/#projects"], ["Experience", "/#experience"], ["Volunteer", "/#volunteer"], ["Tech Stack", "/#skills"], ["Contact", "/#contact"]] as const;
 
-export function Header({ name, initials, cvLink, musicUrl }: { name: string; initials: string; cvLink?: string; musicUrl?: string }) {
+export function Header({ name, cvLink, cvIndonesianLink, musicUrl }: { name: string; cvLink?: string; cvIndonesianLink?: string; musicUrl?: string }) {
   const [open, setOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const header = useRef<HTMLElement>(null);
@@ -27,9 +28,9 @@ export function Header({ name, initials, cvLink, musicUrl }: { name: string; ini
     return () => { document.removeEventListener("keydown", closeOnEscape); document.removeEventListener("pointerdown", closeOutside); desktop.removeEventListener("change", closeOnDesktop); };
   }, [open]);
   return <header ref={header} className="site-header">
-    <Container className="header-inner"><div className="navbar-identity"><Link href="/" className="brand" aria-label={`${name}, home`} onClick={() => setOpen(false)}><span className="brand-initials">{initials}<span aria-hidden="true">/</span></span><span className="brand-name">{name}</span></Link><MusicButton src={musicUrl} /></div>
+    <Container className="header-inner"><div className="navbar-identity"><Link href="/" className="brand" aria-label={`${name}, home`} onClick={() => setOpen(false)}><span className="brand-initials">{name.trim().split(/\s+/)[0].toUpperCase()}<span aria-hidden="true">/</span></span></Link><MusicButton src={musicUrl} /></div>
       <nav className="desktop-nav" aria-label="Primary navigation">{nav.map(([label, href]) => <Link key={label} href={href}>{label}</Link>)}</nav>
-      <div className="header-actions">{cvLink && <a href={cvLink} className="header-cv">Download CV</a>}<button ref={menuButton} className="menu-button" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? "Close" : "Menu"}<span aria-hidden="true">{open ? "−" : "+"}</span></button></div>
+      <div className="header-actions">{(cvLink || cvIndonesianLink) && <CvDialog englishHref={cvLink} indonesianHref={cvIndonesianLink} className="header-cv">Download CV</CvDialog>}<button ref={menuButton} className="menu-button" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? "Close" : "Menu"}<span aria-hidden="true">{open ? "−" : "+"}</span></button></div>
     </Container>
     <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation" hidden={!open}>{nav.map(([label, href]) => <Link key={label} href={href} onClick={() => setOpen(false)}>{label}<span aria-hidden="true">↗</span></Link>)}</nav>
   </header>;

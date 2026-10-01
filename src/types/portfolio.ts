@@ -44,6 +44,7 @@ export type Profile = {
   whatsappNumber?: string; whatsappMessage?: string;
   linkedinUrl?: string; githubUrl?: string; pddiktiUrl?: string;
   cv?: { url: string; filename: string };
+  cvIndonesian?: { url: string; filename: string };
   cvUrl?: string;
   musicUrl?: string;
   instagramUrl?: string;

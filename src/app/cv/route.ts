@@ -4,13 +4,16 @@ import { cvDownloadUrl } from '@/content/utils';
 export const dynamic = 'force-dynamic';
 
 // Read the latest published file on each click, even when a page is still cached.
-export async function GET() {
+export async function GET(request: Request) {
+  const language = new URL(request.url).searchParams.get('lang') ?? 'en';
+  if (!['en', 'id'].includes(language)) return new Response('Unknown CV language.', { status: 400 });
+  const field = language === 'id' ? 'cvIndonesian' : 'cv';
   const headers = { 'Cache-Control': 'no-store' };
   const client = getSanityClient();
   if (!client) return new Response('A CV is not available yet.', { status: 404, headers });
   try {
     const file = await client.fetch<{ url?: string; filename?: string } | null>(
-      '*[_type == "profile" && _id == "profile"][0].cv.asset->{url, "filename": originalFilename}',
+      `*[_type == "profile" && _id == "profile"][0].${field}.asset->{url, "filename": originalFilename}`,
       {}, { cache: 'no-store' },
     );
     const url = cvDownloadUrl(file);

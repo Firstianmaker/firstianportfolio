@@ -73,7 +73,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         >
           Skip to content
         </a>
-        <Header name={profile.name} initials={profile.initials} cvLink={cvHref(displayProfile(profile))} musicUrl={profile.musicUrl} />
+        <Header name={profile.name} cvLink={cvHref(displayProfile(profile))} cvIndonesianLink={cvHref(profile, "id")} musicUrl={profile.musicUrl} />
         <main id="main-content">{children}</main>
         <Footer profile={profile} />
       </body>

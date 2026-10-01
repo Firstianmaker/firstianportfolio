@@ -29,7 +29,8 @@ export function formatBirthDate(value?: string): string | undefined {
   return new Intl.DateTimeFormat("en", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(value + "T00:00:00Z"));
 }
 
-export function cvHref(profile: Profile): string | undefined {
+export function cvHref(profile: Profile, language: "en" | "id" = "en"): string | undefined {
+  if (language === "id") return profile.cvIndonesian ? "/cv?lang=id" : undefined;
   return safeExternalUrl(profile.cvUrl) || (profile.cv ? "/cv" : undefined);
 }
 
