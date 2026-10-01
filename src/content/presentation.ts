@@ -1,4 +1,4 @@
-import type { Profile, ProjectMedia } from "../types/portfolio";
+import type { Profile, Project, ProjectMedia } from "../types/portfolio";
 import { presentation } from "../data/presentation";
 import { safeExternalUrl } from "./utils";
 
@@ -41,4 +41,15 @@ export function uniqueImages(images: (ProjectMedia | undefined)[]): ProjectMedia
     seen.add(image.src);
     return true;
   });
+}
+
+export function isMobileProject(project: Pick<Project, "category" | "stack">): boolean {
+  if (project.category.trim().toLowerCase() === "full stack web") return false;
+  return /mobile|android|flutter/i.test(project.category + " " + project.stack.join(" "));
+}
+
+export function mobileThumbnailImages(project: Pick<Project, "coverImage" | "gallery">): ProjectMedia[] {
+  const images = uniqueImages([project.coverImage, ...project.gallery]);
+  const portraits = images.filter((image) => image.height > image.width);
+  return (portraits.length ? portraits : images).slice(0, 3);
 }

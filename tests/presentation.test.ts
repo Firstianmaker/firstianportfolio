@@ -4,7 +4,7 @@ import { evaluate, parse } from "groq-js";
 import { createInitialDocuments } from "../scripts/seed-data";
 import { initialPortfolio } from "../src/content/initial";
 import { normalizePortfolio, type RawPortfolio } from "../src/content/normalize";
-import { cvHref, displayProfile, uniqueImages, wholeYearsSince } from "../src/content/presentation";
+import { cvHref, displayProfile, uniqueImages, wholeYearsSince, isMobileProject, mobileThumbnailImages } from "../src/content/presentation";
 import { portfolioQuery } from "../src/sanity/queries";
 
 test("personal dates use complete calendar years and reject impossible or future dates", () => {
@@ -56,4 +56,17 @@ test("gallery preserves order without duplicating the cover image", () => {
   const image = initialPortfolio.projects[0].coverImage!;
   const second = { ...image, src: "/another-image.png" };
   assert.deepEqual(uniqueImages([image, undefined, image, second]), [image, second]);
+});
+
+test("mobile previews prefer distinct portrait screenshots and handle missing images", () => {
+  const media = (src: string, width = 400, height = 800) => ({ src, width, height, alt: src, caption: "" });
+  const cover = media("cover", 1200, 800);
+  const first = media("first");
+  assert.deepEqual(mobileThumbnailImages({ coverImage: cover, gallery: [first, first, media("second"), media("third"), media("fourth")] }).map((image) => image.src), ["first", "second", "third"]);
+  assert.deepEqual(mobileThumbnailImages({ coverImage: first, gallery: [first] }), [first]);
+  assert.deepEqual(mobileThumbnailImages({ coverImage: cover, gallery: [] }), [cover]);
+  assert.deepEqual(mobileThumbnailImages({ gallery: [] }), []);
+  assert.equal(isMobileProject({ category: "Android application", stack: [] }), true);
+  assert.equal(isMobileProject({ category: "Mobile", stack: [] }), true);
+  assert.equal(isMobileProject({ category: "Full Stack Web", stack: ["Flutter"] }), false);
 });

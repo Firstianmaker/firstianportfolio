@@ -547,3 +547,15 @@ button.cv-button { cursor: pointer; text-align: left; }
 @keyframes cv-robot-blink { 0%, 35%, 39%, 76%, 80%, 100% { transform: scaleY(1); } 37%, 78% { transform: scaleY(.12); } }
 @media (prefers-reduced-motion: reduce) { .cv-dialog[open] :is(.cv-robot-body, .cv-robot-wave, .cv-robot-eyes) { animation: none; } }
 @media (max-height: 540px) { .cv-robot { width: 88px; margin-bottom: 0; } }
+
+.mobile-project-thumbnail { display: flex; align-items: center; justify-content: center; gap: 3%; aspect-ratio: 16 / 10; padding: 4% 3%; overflow: hidden; background: #102131; }
+.mobile-project-thumbnail > img { width: 29%; height: 100%; min-width: 0; object-fit: contain; border-radius: 6px; }
+.image-gallery.portrait-project-gallery { display: grid; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: clamp(210px, 23vw, 280px); align-items: start; gap: 20px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; padding: 4px 4px 18px; scrollbar-width: thin; scrollbar-color: #5798a8 #102131; }
+.portrait-project-gallery > figure { min-width: 0; scroll-snap-align: start; }
+.portrait-project-gallery .gallery-trigger img { aspect-ratio: 9 / 19.5; width: 100%; height: auto; object-fit: contain; }
+.portrait-gallery-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; color: #a0b4c6; font: 400 .75rem/1.5 var(--font-inter), sans-serif; }
+.portrait-gallery-controls > div { display: flex; gap: 8px; }
+.portrait-gallery-controls button { width: 44px; height: 44px; border: 1px solid #34485e; border-radius: 50%; color: #8de3ee; cursor: pointer; }
+.portrait-gallery-controls button:hover { background: #14283a; }
+.portrait-project-gallery:focus-visible, .portrait-gallery-controls button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+@media (max-width: 639px) { .image-gallery.portrait-project-gallery { grid-auto-columns: 72%; gap: 16px; } }

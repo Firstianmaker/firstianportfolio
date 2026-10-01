@@ -5,7 +5,7 @@ import { ArrowLeftIcon, ArrowUpRightIcon } from "@/components/icons";
 import { Container } from "@/components/container";
 import { ImageGallery } from "@/components/image-gallery";
 import { getPortfolio, getProject } from "@/content/portfolio";
-import { uniqueImages } from "@/content/presentation";
+import { uniqueImages, isMobileProject } from "@/content/presentation";
 import { SocialIcon } from "@/components/social-links";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
@@ -45,7 +45,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       </div>
     </Container></section>
     {project.highlights.length > 0 && <section className="section project-features"><Container className="feature-layout"><h2 className="direct-heading">Key Features</h2><ul className="contribution-list">{project.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}</ul></Container></section>}
-    <section className="section project-gallery-section"><Container><div className="section-topline"><h2 className="direct-heading">Project Gallery</h2><p className="eyebrow">Select an image to zoom</p></div>{images.length ? <ImageGallery images={images} title={project.shortTitle + " gallery"} className="project-image-gallery" /> : <p className="empty-state">Project screenshots have not been added yet.</p>}</Container></section>
+    <section className="section project-gallery-section"><Container><div className="section-topline"><h2 className="direct-heading">Project Gallery</h2><p className="eyebrow">Select an image to zoom</p></div>{images.length ? <ImageGallery images={images} title={project.shortTitle + " gallery"} className="project-image-gallery" portrait={isMobileProject(project)} /> : <p className="empty-state">Project screenshots have not been added yet.</p>}</Container></section>
     <Container className="pb-12"><Link href="/#projects" className="button button-secondary"><ArrowLeftIcon className="size-4" />Back to projects</Link></Container>
   </article>;
 }

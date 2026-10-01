@@ -28,3 +28,5 @@ External CV link mendapat prioritas atas file CV. Foto About memakai Fallback Ab
 Field layout lama, statistik manual, terjemahan yang belum aktif, serta bagian case study yang tidak dirender disembunyikan. Dokumen skillGroup dan certification lama tidak muncul di navigasi atau menu pembuatan dokumen. Data dan schema lamanya tetap disimpan; tidak perlu seed/import ulang.
 
 Tombol Download CV membuka pilihan bahasa. Upload English CV file dan CV Bahasa Indonesia di Profile & About → Contact & CV. File CV lama tetap menjadi versi English; pastikan bahasanya benar. External English CV link menggantikan file English saja. Versi Indonesia yang kosong ditandai Not available yet.
+
+Proyek Mobile: thumbnail menggabungkan maksimal tiga gambar portrait unik dari cover dan Screenshot gallery. Urutan cover lebih dulu, lalu galeri. Jika tidak ada portrait, memakai gambar yang tersedia. Galeri detail berupa deretan portrait yang bisa digeser dengan swipe/panah; klik untuk zoom. Proyek Full Stack Web tetap memakai cover dan grid biasa.

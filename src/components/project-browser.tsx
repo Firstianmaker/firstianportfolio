@@ -1,5 +1,6 @@
 "use client";
 
+import { isMobileProject } from "@/content/presentation";
 import { useState } from "react";
 import { WalkingCat } from "@/components/walking-cat";
 import { ProjectCard } from "@/components/project-card";
@@ -8,7 +9,7 @@ import type { Project } from "@/types/portfolio";
 export function ProjectBrowser({ projects }: { projects: Project[] }) {
   const [category, setCategory] = useState<string | null>(null);
   const categories = ["Mobile", "Full Stack Web"] as const;
-  const visible = category === null ? projects : projects.filter((project) => (/mobile|android|flutter/i.test(project.category + " " + project.stack.join(" ")) ? "Mobile" : "Full Stack Web") === category);
+  const visible = category === null ? projects : projects.filter((project) => (isMobileProject(project) ? "Mobile" : "Full Stack Web") === category);
   if (!projects.length) return <p className="empty-state">Projects will appear here when published.</p>;
   return <>
     <div className="project-browser-toolbar">
