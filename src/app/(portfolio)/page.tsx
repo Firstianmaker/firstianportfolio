@@ -83,7 +83,7 @@ export default async function Home() {
 
     <section id="projects" className="section work-section">
       <Container><div className="section-topline"><h2 className="direct-heading">Projects</h2></div>
-        <ProjectBrowser projects={selectedProjects} />
+        <ProjectBrowser projects={selectedProjects} totalProjects={projects.length} />
         <div className="all-projects-action"><Link href="/projects" className="button button-secondary">See all projects<ArrowUpRightIcon className="size-4" /></Link></div>
       </Container>
     </section>
