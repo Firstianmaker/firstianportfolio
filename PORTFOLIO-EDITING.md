@@ -30,3 +30,5 @@ Field layout lama, statistik manual, terjemahan yang belum aktif, serta bagian c
 Tombol Download CV membuka pilihan bahasa. Upload English CV file dan CV Bahasa Indonesia di Profile & About → Contact & CV. File CV lama tetap menjadi versi English; pastikan bahasanya benar. External English CV link menggantikan file English saja. Versi Indonesia yang kosong ditandai Not available yet.
 
 Proyek Mobile: thumbnail menggabungkan maksimal tiga gambar portrait unik dari cover dan Screenshot gallery. Urutan cover lebih dulu, lalu galeri. Jika tidak ada portrait, memakai gambar yang tersedia. Galeri detail berupa deretan portrait yang bisa digeser dengan swipe/panah; klik untuk zoom. Proyek Full Stack Web tetap memakai cover dan grid biasa.
+
+Tech stack proyek: paste daftar ke Technologies (satu baris = satu skill), lalu Add skills. Skill lama tetap ada; baris kosong dan duplikat diabaikan.

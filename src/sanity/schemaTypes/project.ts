@@ -1,3 +1,4 @@
+import { TechnologyInput } from '../inputs/technology-input';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { displayOrder, externalUrl, orderedDocument, requiredString, strings, text, translationsField } from './fields';
 
@@ -23,7 +24,7 @@ export const project = defineType({
     { ...requiredString('period', 'Displayed project period'), group: 'overview', description: 'For example: June 2026 — July 2026. Preserve approximate dates as text.' },
     defineField({ name: 'projectDate', title: 'Project date', type: 'date', group: 'overview', description: 'Optional exact date. The displayed period remains the text above.' }),
     defineField({ ...text('summary', 'Short description'), group: 'overview', validation: (rule) => rule.required() }),
-    { ...strings('stack', 'Technologies'), group: 'overview', description: 'Add a technology per item. Drag to reorder the badges.' },
+    { ...strings('stack', 'Technologies'), group: 'overview', components: { input: TechnologyInput }, description: 'Paste one technology per line, then click Add skills. You can also edit and reorder individual items below.' },
     defineField({ ...text('description', 'Full project introduction'), group: 'story', validation: (rule) => rule.required() }),
     defineField({ name: 'content', title: 'Additional rich text', type: 'richContent', group: 'story', description: 'Optional formatted content below the introduction.' }),
     { ...text('challenge', 'Challenge'), group: 'story' },
