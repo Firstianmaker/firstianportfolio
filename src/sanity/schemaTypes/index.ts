@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
-import { caseStudySection, displayOrder, externalUrl, galleryField, imageField, translationsField, metric, orderedDocument, portfolioImage, requiredString, richContent, strings, text } from './fields';
+import { volunteerGalleryImage, caseStudySection, displayOrder, externalUrl, galleryField, imageField, translationsField, metric, orderedDocument, portfolioImage, requiredString, richContent, strings, text } from './fields';
 import { profile } from './profile';
 import { project } from './project';
 
@@ -33,7 +33,7 @@ const activity = defineType({
     defineField({ name: 'location', title: 'Location', type: 'string' }),
     text('summary', 'Short description'), text('description', 'Detailed introduction'),
     defineField({ name: 'content', title: 'Activity story', type: 'richContent', description: 'Describe the event, your contribution, and what you learned.' }),
-    imageField('coverImage', 'Cover image'), defineField({ ...galleryField, title: 'Documentation photos', description: 'The first four photos appear in Documentation. Drag to reorder.', validation: (rule) => rule.max(4).warning('Only the first four photos appear on the website.') }),
+    imageField('coverImage', 'Cover image'), defineField({ ...galleryField, of: [volunteerGalleryImage], title: 'Documentation photos', description: 'The first four photos appear in Documentation. Drag to reorder.', validation: (rule) => rule.max(4).warning('Only the first four photos appear on the website.') }),
     strings('highlights', 'Highlights / contributions'),
     defineField({ name: 'metrics', title: 'Metrics (optional)', type: 'array', of: [defineArrayMember({ type: 'metric' })] }),
     externalUrl('externalUrl', 'Event / organization link'), displayOrder,

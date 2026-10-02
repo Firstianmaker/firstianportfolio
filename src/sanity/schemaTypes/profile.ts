@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
-import { externalUrl, imageField, requiredString, strings, text, translationsField } from './fields';
+import { volunteerGalleryImage, externalUrl, imageField, requiredString, strings, text, translationsField } from './fields';
 import { technicalGroups } from '../../data/technical-stack';
 import { profileDefaults } from '../../content/profile-defaults';
 
@@ -36,7 +36,7 @@ export const profile = defineType({
     defineField({ name: 'whatsappNumber', title: 'WhatsApp number', type: 'string', initialValue: profileDefaults.whatsappNumber, description: 'Accepts 0897…, 62897… or +62897…. Indonesia is used for a local number.' }),
     defineField({ name: 'whatsappMessage', title: 'WhatsApp default message', type: 'text', rows: 2, initialValue: profileDefaults.whatsappMessage }),
     externalUrl('linkedinUrl', 'LinkedIn URL'), externalUrl('githubUrl', 'GitHub URL'), externalUrl('instagramUrl', 'Instagram URL'), externalUrl('letterboxdUrl', 'Letterboxd URL'),
-    defineField({ name: 'volunteerImages', title: 'Volunteer showcase (3 images)', type: 'array', of: [defineArrayMember({ type: 'portfolioImage' })], options: { layout: 'grid' }, validation: (rule) => rule.max(3), description: 'Choose three community photographs in their display order.' }),
+    defineField({ name: 'volunteerImages', title: 'Volunteer showcase (3 images)', type: 'array', of: [volunteerGalleryImage], options: { layout: 'grid' }, validation: (rule) => rule.max(3), description: 'Choose three community photographs in their display order.' }),
     { ...externalUrl('pddiktiUrl', 'Default PDDIKTI student URL'), initialValue: profileDefaults.pddiktiUrl, description: 'Used for the original UPNVJ entry; other education entries can use their own URL.' },
     { ...strings('softSkills', 'Legacy soft skills'), hidden: true },
     translationsField([['role', 'Professional title', 'string'], ['heroHeadline', 'Supporting headline', 'text'], ['intro', 'Introduction', 'text'], ['about', 'About', 'text'], ['aboutTagline', 'About tagline', 'text'], ['experienceIntro', 'Experience introduction', 'text']]),

@@ -56,6 +56,17 @@ export const portfolioImage = defineType({
   preview: { select: { title: 'alt', subtitle: 'caption', media: 'asset' } },
 });
 
+export const volunteerGalleryImage = defineArrayMember({
+  name: 'portfolioImage', title: 'Volunteer photo', type: 'image',
+  options: { hotspot: true, accept: 'image/png,image/jpeg,image/webp,image/avif,image/gif' },
+  fields: [
+    defineField({ name: 'alt', type: 'string', hidden: true }),
+    defineField({ name: 'caption', type: 'string', hidden: true }),
+  ],
+  validation: (rule) => rule.custom((value) => value && !value.asset ? 'Upload or select an image, or remove this empty image entry.' : true),
+  preview: { select: { media: 'asset' }, prepare: ({ media }) => ({ title: 'Volunteer photo', media }) },
+});
+
 export const caseStudySection = defineType({
   name: 'caseStudySection', title: 'Case-study section', type: 'object',
   fields: [requiredString('title', 'Heading'), text('body', 'Content')],

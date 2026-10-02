@@ -30,7 +30,7 @@ export function normalizeActivity(raw: RawMedia<Activity>, config: ImageConfig):
     role: raw.role ?? '', period: raw.period ?? '', date: raw.date || undefined,
     summary: raw.summary ?? '', description: raw.description ?? '', content: raw.content ?? [],
     organization: raw.organization ?? '', location: raw.location ?? '',
-    coverImage: toProjectMedia(raw.coverImage, config), gallery: gallery(raw.gallery, config),
+    coverImage: toProjectMedia(raw.coverImage, config), gallery: gallery(raw.gallery, config).map((image, index) => ({ ...image, alt: image.alt || `${raw.title || "Volunteer activity"} — documentation photo ${index + 1}` })),
     highlights: raw.highlights ?? [], metrics: raw.metrics ?? [],
     externalUrl: safeExternalUrl(raw.externalUrl), displayOrder: raw.displayOrder ?? 100,
   };
@@ -73,7 +73,7 @@ export function normalizePortfolio(raw: RawPortfolio, config: { projectId: strin
       roles: profile.roles ?? undefined, aboutShort: profile.aboutShort ?? undefined,
       birthPlace: profile.birthPlace ?? undefined, birthDate: profile.birthDate ?? undefined,
       heightCm: profile.heightCm ?? undefined, itExperienceStartDate: profile.itExperienceStartDate ?? undefined,
-      volunteerImages: profile.volunteerImages ? gallery(profile.volunteerImages, config) : undefined,
+      volunteerImages: profile.volunteerImages ? gallery(profile.volunteerImages, config).map((image, index) => ({ ...image, alt: image.alt || `Volunteer photo ${index + 1}` })) : undefined,
       cvIndonesian: cvDownloadUrl(profile.cvIndonesian) ? profile.cvIndonesian : undefined,
       cv: cvDownloadUrl(profile.cv) ? profile.cv : undefined,
     }, heroMetrics: heroMetrics ?? [], softSkills: softSkills ?? [], languages: languages ?? [],

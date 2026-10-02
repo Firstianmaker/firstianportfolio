@@ -3,7 +3,7 @@ import test from 'node:test';
 import { evaluate, parse } from 'groq-js';
 import { createInitialDocuments } from '../scripts/seed-data';
 import { initialPortfolio } from '../src/content/initial';
-import { normalizePortfolio, type RawPortfolio } from '../src/content/normalize';
+import { normalizeActivity, normalizePortfolio, type RawPortfolio } from '../src/content/normalize';
 import { cvDownloadUrl, skillCards, whatsappUrl } from '../src/content/utils';
 import { localizedValue } from '../src/content/localization';
 import { portfolioQuery } from '../src/sanity/queries';
@@ -71,4 +71,12 @@ test('six skills cards and localization fallback preserve original English', () 
   assert.equal(localizedValue('Original', { en: 'English', id: ' ' }, 'id'), 'English');
   assert.equal(localizedValue('Original', undefined, 'id'), 'Original');
   assert.deepEqual(localizedValue(['Original block'], { id: [] }, 'id'), ['Original block']);
+});
+
+test('volunteer documentation accepts images without editorial text and preserves existing text', () => {
+  const result = normalizeActivity({ _id: 'activity', title: 'Community workshop', coverImage: image('Cover description'), gallery: [image(''), { ...image('Existing description'), caption: 'Existing caption' }] }, config);
+  assert.equal(result.coverImage?.alt, 'Cover description');
+  assert.equal(result.gallery[0].alt, 'Community workshop — documentation photo 1');
+  assert.equal(result.gallery[1].alt, 'Existing description');
+  assert.equal(result.gallery[1].caption, 'Existing caption');
 });

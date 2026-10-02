@@ -32,3 +32,5 @@ Tombol Download CV membuka pilihan bahasa. Upload English CV file dan CV Bahasa 
 Proyek Mobile: thumbnail menggabungkan maksimal tiga gambar portrait unik dari cover dan Screenshot gallery. Urutan cover lebih dulu, lalu galeri. Jika tidak ada portrait, memakai gambar yang tersedia. Galeri detail berupa deretan portrait yang bisa digeser dengan swipe/panah; klik untuk zoom. Proyek Full Stack Web tetap memakai cover dan grid biasa.
 
 Tech stack proyek: paste daftar ke Technologies (satu baris = satu skill), lalu Add skills. Skill lama tetap ada; baris kosong dan duplikat diabaikan.
+
+Foto Volunteer showcase dan Documentation photos cukup upload/crop: tidak perlu Alt text atau caption. Cover volunteer tetap memakai kedua field. Teks alternatif galeri diisi otomatis bila belum tersedia; data deskripsi lama tidak dihapus.
